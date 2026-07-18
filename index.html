@@ -3,554 +3,854 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Seven Brew Closing Checklist</title>
+  <title>Seven Brew Drive Thru — Closing Checklist</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #1a1a1a;
-      color: #f0f0f0;
+      background-color: #1A1A1A;
+      color: #FFFFFF;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       padding: 20px;
-      max-width: 750px;
-      margin: auto;
     }
 
-    h1 {
+    header {
+      background-color: #8B0000;
+      color: #FFFFFF;
       text-align: center;
-      font-size: 1.6rem;
-      color: #f5c842;
-      margin-bottom: 5px;
+      padding: 30px 20px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 15px rgba(139, 0, 0, 0.5);
     }
 
-    .subtitle {
-      text-align: center;
-      font-size: 0.85rem;
-      color: #aaa;
-      margin-bottom: 20px;
+    header h1 {
+      font-size: 2rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
 
-    .meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 24px;
-    }
-
-    .meta label {
-      font-size: 0.85rem;
-      color: #ccc;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-      min-width: 200px;
-    }
-
-    .meta input {
-      margin-top: 4px;
-      padding: 8px;
-      border-radius: 8px;
-      border: 1px solid #444;
-      background: #2a2a2a;
-      color: #f0f0f0;
-      font-size: 0.95rem;
+    header p {
+      font-size: 0.9rem;
+      margin-top: 8px;
+      opacity: 0.85;
     }
 
     .section {
-      background: #2a2a2a;
-      border-radius: 12px;
-      padding: 16px 20px;
-      margin-bottom: 20px;
-      border-left: 5px solid #f5c842;
+      background-color: #0D0D0D;
+      border-left: 5px solid #8B0000;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.4);
     }
-
-    .section.orange { border-left-color: #f5a623; }
-    .section.purple { border-left-color: #a855f7; }
-    .section.red    { border-left-color: #ef4444; }
-    .section.lock   { border-left-color: #22c55e; }
-    .section.signoff{ border-left-color: #3b82f6; }
 
     .section h2 {
-      font-size: 1rem;
-      margin-bottom: 14px;
-      color: #f5c842;
+      color: #8B0000;
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-bottom: 1px solid #8B0000;
+      padding-bottom: 8px;
     }
-
-    .section.orange h2 { color: #f5a623; }
-    .section.purple h2 { color: #a855f7; }
-    .section.red h2    { color: #ef4444; }
-    .section.lock h2   { color: #22c55e; }
-    .section.signoff h2{ color: #3b82f6; }
 
     .task {
       display: flex;
       align-items: flex-start;
       gap: 12px;
-      padding: 10px 0;
-      border-bottom: 1px solid #3a3a3a;
-      cursor: pointer;
+      padding: 12px 0;
+      border-bottom: 1px solid #2C2C2C;
     }
 
-    .task:last-child { border-bottom: none; }
+    .task:last-child {
+      border-bottom: none;
+    }
 
     .task input[type="checkbox"] {
       width: 20px;
       height: 20px;
-      margin-top: 2px;
-      accent-color: #f5c842;
-      cursor: pointer;
+      accent-color: #8B0000;
+      margin-top: 3px;
       flex-shrink: 0;
-    }
-
-    .task label {
-      font-size: 0.92rem;
-      line-height: 1.5;
       cursor: pointer;
-      color: #e0e0e0;
     }
 
-    .task.checked label {
+    .task-content {
+      flex: 1;
+    }
+
+    .task-label {
+      font-size: 0.95rem;
+      color: #FFFFFF;
+      line-height: 1.4;
+    }
+
+    .task.completed .task-label {
       text-decoration: line-through;
-      color: #666;
+      opacity: 0.5;
     }
 
-    .progress-bar-wrap {
-      background: #3a3a3a;
+    .timestamp {
+      font-size: 0.75rem;
+      color: #8B0000;
+      margin-top: 4px;
+      font-style: italic;
+    }
+
+    .initials-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .initials-row input[type="text"] {
+      background-color: #2C2C2C;
+      border: 1px solid #8B0000;
+      border-radius: 6px;
+      color: #FFFFFF;
+      padding: 4px 10px;
+      font-size: 0.8rem;
+      width: 80px;
+    }
+
+    .initials-row label {
+      font-size: 0.8rem;
+      color: #FFFFFF;
+      opacity: 0.7;
+    }
+
+    .progress-bar-container {
+      background-color: #2C2C2C;
       border-radius: 999px;
-      height: 10px;
-      margin-bottom: 24px;
+      height: 14px;
+      margin-bottom: 30px;
       overflow: hidden;
     }
 
     .progress-bar {
+      background-color: #8B0000;
       height: 100%;
-      background: #f5c842;
-      border-radius: 999px;
-      transition: width 0.3s ease;
       width: 0%;
+      transition: width 0.4s ease;
+      border-radius: 999px;
     }
 
     .progress-label {
       text-align: center;
-      font-size: 0.8rem;
-      color: #aaa;
-      margin-top: -18px;
-      margin-bottom: 20px;
-    }
-
-    .signoff-fields {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 10px;
-    }
-
-    .signoff-fields label {
       font-size: 0.85rem;
-      color: #ccc;
+      color: #FFFFFF;
+      opacity: 0.7;
+      margin-bottom: 8px;
+    }
+
+    .signoff {
+      background-color: #0D0D0D;
+      border: 2px solid #8B0000;
+      border-radius: 10px;
+      padding: 25px;
+      margin-top: 30px;
+      box-shadow: 0 2px 10px rgba(139,0,0,0.3);
+    }
+
+    .signoff h2 {
+      color: #8B0000;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #8B0000;
+      padding-bottom: 8px;
+    }
+
+    .signoff-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    @media (max-width: 600px) {
+      .signoff-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .signoff-field {
       display: flex;
       flex-direction: column;
+      gap: 6px;
     }
 
-    .signoff-fields input, .signoff-fields textarea {
-      margin-top: 4px;
-      padding: 8px;
-      border-radius: 8px;
-      border: 1px solid #444;
-      background: #1a1a1a;
-      color: #f0f0f0;
-      font-size: 0.95rem;
+    .signoff-field label {
+      font-size: 0.8rem;
+      color: #FFFFFF;
+      opacity: 0.7;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
-    .signoff-fields textarea {
+    .signoff-field input,
+    .signoff-field textarea {
+      background-color: #2C2C2C;
+      border: 1px solid #8B0000;
+      border-radius: 6px;
+      color: #FFFFFF;
+      padding: 10px;
+      font-size: 0.9rem;
+      font-family: inherit;
       resize: vertical;
-      min-height: 70px;
     }
 
-    .btn-wrap {
-      text-align: center;
-      margin-top: 24px;
-      margin-bottom: 10px;
+    .signoff-field input:focus,
+    .signoff-field textarea:focus {
+      outline: none;
+      border-color: #DC143C;
+      box-shadow: 0 0 6px rgba(139,0,0,0.5);
     }
 
-    button {
-      background: #f5c842;
-      color: #1a1a1a;
-      border: none;
-      padding: 12px 32px;
-      border-radius: 999px;
-      font-size: 1rem;
+    .submit-btn {
+      display: block;
+      width: 100%;
+      margin-top: 25px;
+      padding: 15px;
+      background-color: #8B0000;
+      color: #FFFFFF;
+      font-size: 1.1rem;
       font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      border: none;
+      border-radius: 10px;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: background-color 0.3s ease, transform 0.1s ease;
     }
 
-    button:hover { background: #e0b030; }
+    .submit-btn:hover {
+      background-color: #DC143C;
+      transform: scale(1.01);
+    }
+
+    .submit-btn:active {
+      transform: scale(0.99);
+    }
 
     .reset-btn {
-      background: #ef4444;
-      color: white;
-      margin-left: 12px;
+      display: block;
+      width: 100%;
+      margin-top: 12px;
+      padding: 12px;
+      background-color: transparent;
+      color: #FFFFFF;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: 1px solid #2C2C2C;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: border-color 0.3s ease;
     }
 
-    .reset-btn:hover { background: #c0392b; }
-
-    .footer {
-      text-align: center;
-      font-size: 0.75rem;
-      color: #555;
-      margin-top: 20px;
-      padding-bottom: 40px;
+    .reset-btn:hover {
+      border-color: #8B0000;
+      color: #8B0000;
     }
 
-    .tag {
-      font-size: 0.7rem;
-      background: #333;
-      color: #f5c842;
-      padding: 2px 8px;
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #8B0000;
+      color: #FFFFFF;
+      padding: 14px 28px;
       border-radius: 999px;
-      margin-left: 6px;
-      vertical-align: middle;
+      font-size: 0.95rem;
+      font-weight: bold;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      z-index: 999;
+      box-shadow: 0 4px 20px rgba(139,0,0,0.6);
     }
 
-    .tag.red { color: #ef4444; }
+    .toast.show {
+      opacity: 1;
+    }
 
-    #complete-msg {
-      display: none;
+    footer {
       text-align: center;
-      background: #22c55e22;
-      border: 1px solid #22c55e;
-      border-radius: 12px;
-      padding: 16px;
-      margin-bottom: 20px;
-      color: #22c55e;
-      font-weight: bold;
-      font-size: 1rem;
+      margin-top: 40px;
+      font-size: 0.75rem;
+      color: #FFFFFF;
+      opacity: 0.4;
     }
   </style>
 </head>
 <body>
 
+<header>
   <h1>☕ Seven Brew Drive Thru</h1>
-  <p class="subtitle">Closing Checklist</p>
+  <p>Closing Checklist — Last Updated July 2025</p>
+</header>
 
-  <div class="meta">
-    <label>📅 Date <input type="date" id="meta-date" /></label>
-    <label>👤 Shift Lead <input type="text" id="meta-sl" placeholder="Enter name..." /></label>
-  </div>
+<div class="progress-label" id="progressLabel">0 of 0 tasks completed</div>
+<div class="progress-bar-container">
+  <div class="progress-bar" id="progressBar"></div>
+</div>
 
-  <div class="progress-bar-wrap">
-    <div class="progress-bar" id="progress-bar"></div>
-  </div>
-  <p class="progress-label" id="progress-label">0 of 0 tasks completed</p>
+<!-- ===================== 6:00 PM – 8:00 PM ===================== -->
+<div class="section">
+  <h2>⏰ 6:00 PM – 8:00 PM</h2>
 
-  <div id="complete-msg">✅ All tasks complete! Ready to sign off.</div>
-
-  <!-- 6:00 PM - 8:00 PM -->
-  <div class="section yellow">
-    <h2>🟡 6:00 PM – 8:00 PM</h2>
-
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Clean and shut down blender</label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Shut down 1–2 group heads <em>(right to left)</em></label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Clean syrup rack and the counters underneath</label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Wipe down squeeze bottles on syrup racks</label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Stock and close mini fridge</label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Clean floor drains</label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Sweep, scrub, and mop floors</label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Pre-count starting cash and set aside</label>
+  <div class="task" id="task-1">
+    <input type="checkbox" onchange="handleCheck(this, 'task-1', 'ts-1')"/>
+    <div class="task-content">
+      <div class="task-label">Clean and shut down blender (wipe exterior, rinse pitcher, store properly)</div>
+      <div class="timestamp" id="ts-1"></div>
+      <div class="initials-row">
+        <label>Initials:</label>
+        <input type="text" maxlength="4" placeholder="_ _"/>
+      </div>
     </div>
   </div>
 
-  <!-- 8:00 PM - 9:00 PM -->
-  <div class="section orange">
-    <h2>🟠 8:00 PM – 9:00 PM</h2>
-
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Shut down back machine <em>(if slow enough)</em></label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Take off syrup toppers</label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Restock machines <em>(cups, lids, sugars, etc.)</em></label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Fill up machine sauce bottles</label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Close out Lane 2 drawer <em>(if slow enough)</em> <span class="tag">SL ONLY</span></label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Fill ice — check ice levels</label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Close and clean all rapid rinsers <strong>except</strong> front machine rapid rinser</label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>For each steam wand, purge once in a mixture of 2oz Rinza and 8oz Bunn Water. Let steam wand sit in mixture for 10 minutes. Repeat with new mixture for each wand</label>
+  <div class="task" id="task-2">
+    <input type="checkbox" onchange="handleCheck(this, 'task-2', 'ts-2')"/>
+    <div class="task-content">
+      <div class="task-label">Clean group heads (backflush, wipe gaskets and screens)</div>
+      <div class="timestamp" id="ts-2"></div>
+      <div class="initials-row">
+        <label>Initials:</label>
+        <input type="text" maxlength="4" placeholder="_ _"/>
+      </div>
     </div>
   </div>
 
-  <!-- 9:00 PM - 9:30 PM -->
-  <div class="section purple">
-    <h2>🟣 9:00 PM – 9:30 PM</h2>
-
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Shut down third group head</label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Stock fridge</label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Stock machine</label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Take out trash and rags</label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Wipe down lane tables</label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Wipe down exterior of all trash cans</label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Sanitize ice paddle and ice scoops</label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Clean pour spouts — soak in warm soapy water for 10 minutes, rinse thoroughly, drain, and sanitize in the sanitizing sink</label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Take apart, wash, and reassemble each piece of the scoop well</label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Pull out cup dispensers, unscrew the top black ring, and clean all parts</label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Clean bathroom sink faucet, knobs, and basin. Clean toilet and empty trash</label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Cover all open containers, including squeeze bottles</label>
+  <div class="task" id="task-3">
+    <input type="checkbox" onchange="handleCheck(this, 'task-3', 'ts-3')"/>
+    <div class="task-content">
+      <div class="task-label">Wipe down syrup rack (remove drips, wipe bottles and shelf)</div>
+      <div class="timestamp" id="ts-3"></div>
+      <div class="initials-row">
+        <label>Initials:</label>
+        <input type="text" maxlength="4" placeholder="_ _"/>
+      </div>
     </div>
   </div>
 
-  <!-- 10:00 PM Final Close -->
-  <div class="section red">
-    <h2>🔴 10:00 PM — Final Close</h2>
-
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Flush and close remaining group head(s)</label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Close and clean front machine rapid rinser</label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Use grinds brush to clean out grinds buildup in the chamber, emptying as you brush</label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Finish remaining dishes and empty sink</label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Set up machine with clean portafilters, scoops, shot tins, mix cups, and steam pitchers</label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Replace rags on top of machine</label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Set up machine and blenders for morning</label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Put <strong>ALL</strong> Chiller machines on standby</label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Make sure ice machine displays <strong>"Making Ice"</strong></label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Turn off iPads and TV</label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Ensure all iPads and card readers are <strong>charging</strong></label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Turn off inside lights</label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Condense, Pay in, Pay out tips <span class="tag">SL ONLY</span></label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Close Lane 1 drawer <span class="tag">SL ONLY</span></label>
+  <div class="task" id="task-4">
+    <input type="checkbox" onchange="handleCheck(this, 'task-4', 'ts-4')"/>
+    <div class="task-content">
+      <div class="task-label">Wipe down all counters and surfaces</div>
+      <div class="timestamp" id="ts-4"></div>
+      <div class="initials-row">
+        <label>Initials:</label>
+        <input type="text" maxlength="4" placeholder="_ _"/>
+      </div>
     </div>
   </div>
 
-  <!-- Lock-Up -->
-  <div class="section lock">
-    <h2>🔒 Lock-Up</h2>
-
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Walk-in cooler</label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Trash wheelbarrow</label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Lane 1 door</label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Lane 2 door</label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Walkup window / door</label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Snowblower door</label>
-    </div>
-    <div class="task" onclick="toggle(this)">
-      <input type="checkbox" />
-      <label>Stand / main entry</label>
+  <div class="task" id="task-5">
+    <input type="checkbox" onchange="handleCheck(this, 'task-5', 'ts-5')"/>
+    <div class="task-content">
+      <div class="task-label">Pre-count cash drawer and record totals</div>
+      <div class="timestamp" id="ts-5"></div>
+      <div class="initials-row">
+        <label>Initials:</label>
+        <input type="text" maxlength="4" placeholder="_ _"/>
+      </div>
     </div>
   </div>
 
-  <!-- Sign-Off -->
-  <div class="section signoff">
-    <h2>📝 Shift Lead Sign-Off</h2>
-    <div class="signoff-fields">
-      <label>Shift Lead Name
-        <input type="text" id="sl-name" placeholder="Enter name..." />
-      </label>
-      <label>Signature
-        <input type="text" id="sl-sig" placeholder="Type full name as signature..." />
-      </label>
-      <label>Stand Closed At
-        <input type="time" id="sl-time" />
-      </label>
-      <label>Notes / Issues
-        <textarea id="sl-notes" placeholder="Any notes or issues..."></textarea>
-      </label>
+</div>
+
+<!-- ===================== 8:00 PM – 9:00 PM ===================== -->
+<div class="section">
+  <h2>⏰ 8:00 PM – 9:00 PM</h2>
+
+  <div class="task" id="task-6">
+    <input type="checkbox" onchange="handleCheck(this, 'task-6', 'ts-6')"/>
+    <div class="task-content">
+      <div class="task-label">Shut down back machine (if slow enough)</div>
+      <div class="timestamp" id="ts-6"></div>
+      <div class="initials-row">
+        <label>Initials:</label>
+        <input type="text" maxlength="4" placeholder="_ _"/>
+      </div>
     </div>
   </div>
 
-  <div class="btn-wrap">
-    <button onclick="submitChecklist()">✅ Submit & Sign Off</button>
-    <button class="reset-btn" onclick="resetChecklist()">🔄 Reset</button>
+  <div class="task" id="task-7">
+    <input type="checkbox" onchange="handleCheck(this, 'task-7', 'ts-7')"/>
+    <div class="task-content">
+      <div class="task-label">Remove syrup toppers and clean lids</div>
+      <div class="timestamp" id="ts-7"></div>
+      <div class="initials-row">
+        <label>Initials:</label>
+        <input type="text" maxlength="4" placeholder="_ _"/>
+      </div>
+    </div>
   </div>
 
-  <div class="footer">
-    🗓️ Last Updated: July 2025 &nbsp;|&nbsp; Seven Brew Drive Thru<br/>
-    ⚠️ All tasks must be completed before Shift Lead clocks out.
+  <div class="task" id="task-8">
+    <input type="checkbox" onchange="handleCheck(this, 'task-8', 'ts-8')"/>
+    <div class="task-content">
+      <div class="task-label">Restock machines (cups, lids, sleeves, straws)</div>
+      <div class="timestamp" id="ts-8"></div>
+      <div class="initials-row">
+        <label>Initials:</label>
+        <input type="text" maxlength="4" placeholder="_ _"/>
+      </div>
+    </div>
   </div>
+
+  <div class="task" id="task-9">
+    <input type="checkbox" onchange="handleCheck(this, 'task-9', 'ts-9')"/>
+    <div class="task-content">
+      <div class="task-label">Fill sauces and syrups to appropriate levels</div>
+      <div class="timestamp" id="ts-9"></div>
+      <div class="initials-row">
+        <label>Initials:</label>
+        <input type="text" maxlength="4" placeholder="_ _"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="task" id="task-10">
+    <input type="checkbox" onchange="handleCheck(this, 'task-10', 'ts-10')"/>
+    <div class="task-content">
+      <div class="task-label">Close shot drawer</div>
+      <div class="timestamp" id="ts-10"></div>
+      <div class="initials-row">
+        <label>Initials:</label>
+        <input type="text" maxlength="4" placeholder="_ _"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="task" id="task-11">
+    <input type="checkbox" onchange="handleCheck(this, 'task-11', 'ts-11')"/>
+    <div class="task-content">
+      <div class="task-label">Clean and sanitize steam wands</div>
+      <div class="timestamp" id="ts-11"></div>
+      <div class="initials-row">
+        <label>Initials:</label>
+        <input type="text" maxlength="4" placeholder="_ _"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="task" id="task-12">
+    <input type="checkbox" onchange="handleCheck(this, 'task-12', 'ts-12')"/>
+    <div class="task-content">
+      <div class="task-label">Clean all rapid rinsers except front machine</div>
+      <div class="timestamp" id="ts-12"></div>
+      <div class="initials-row">
+        <label>Initials:</label>
+        <input type="text" maxlength="4" placeholder="_ _"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="task" id="task-13">
+    <input type="checkbox" onchange="handleCheck(this, 'task-13', 'ts-13')"/>
+    <div class="task-content">
+      <div class="task-label">Stock fridge (milks, creams, cold brew, etc.)</div>
+      <div class="timestamp" id="ts-13"></div>
+      <div class="initials-row">
+        <label>Initials:</label>
+        <input type="text" maxlength="4" placeholder="_ _"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="task" id="task-14">
+    <input type="checkbox" onchange="handleCheck(this, 'task-14', 'ts-14')"/>
+    <div class="task-content">
+      <div class="task-label">Stock machine (syrups, sauces, dry goods)</div>
+      <div class="timestamp" id="ts-14"></div>
+      <div class="initials-row">
+        <label>Initials:</label>
+        <input type="text" maxlength="4" placeholder="_ _"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="task" id="task-15">
+    <input type="checkbox" onchange="handleCheck(this, 'task-15', 'ts-15')"/>
+    <div class="task-content">
+      <div class="task-label">Close out Lane 2 drawer (if slow enough)</div>
+      <div class="timestamp" id="ts-15"></div>
+      <div class="initials-row">
+        <label>Initials:</label>
+        <input type="text" maxlength="4" placeholder="_ _"/>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===================== 9:00 PM – 10:00 PM ===================== -->
+<div class="section">
+  <h2>⏰ 9:00 PM – 10:00 PM</h2>
+
+  <div class="task" id="task-16">
+    <input type="checkbox" onchange="handleCheck(this, 'task-16', 'ts-16')"/>
+    <div class="task-content">
+      <div class="task-label">Shut down third group head</div>
+      <div class="timestamp" id="ts-16"></div>
+      <div class="initials-row">
+        <label>Initials:</label>
+        <input type="text" maxlength="4" placeholder="_ _"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="task" id="task-17">
+    <input type="checkbox" onchange="handleCheck(this, 'task-17', 'ts-17')"/>
+    <div class="task-content">
+      <div class="task-label">Deep clean steam wands and portafilters</div>
+      <div class="timestamp" id="ts-17"></div>
+      <div class="initials-row">
+        <label>Initials:</label>
+        <input type="text" maxlength="4" placeholder="_ _"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="task" id="task-18">
+    <input type="checkbox" onchange="handleCheck(this, 'task-18', 'ts-18')"/>
+    <div class="task-content">
+      <div class="task-label">Wipe down all equipment exteriors</div>
+      <div class="timestamp" id="ts-18"></div>
+      <div class="initials-row">
+        <label>Initials:</label>
+        <input type="text" maxlength="4" placeholder="_ _"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="task" id="task-19">
+    <input type="checkbox" onchange="handleCheck(this, 'task-19', 'ts-19')"/>
+    <div class="task-content">
+      <div class="task-label">Sweep and mop floors</div>
+      <div class="timestamp" id="ts-19"></div>
+      <div class="initials-row">
+        <label>Initials:</label>
+        <input type="text" maxlength="4" placeholder="_ _"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="task" id="task-20">
+    <input type="checkbox" onchange="handleCheck(this, 'task-20', 'ts-20')"/>
+    <div class="task-content">
+      <div class="task-label">Take out trash and replace liners</div>
+      <div class="timestamp" id="ts-20"></div>
+      <div class="initials-row">
+        <label>Initials:</label>
+        <input type="text" maxlength="4" placeholder="_ _"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="task" id="task-21">
+    <input type="checkbox" onchange="handleCheck(this, 'task-21', 'ts-21')"/>
+    <div class="task-content">
+      <div class="task-label">Wipe down drive-thru window and ledge</div>
+      <div class="timestamp" id="ts-21"></div>
+      <div class="initials-row">
+        <label>Initials:</label>
+        <input type="text" maxlength="4" placeholder="_ _"/>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===================== 10:00 PM FINAL CLOSE ===================== -->
+<div class="section">
+  <h2>🔒 10:00 PM — Final Close</h2>
+
+  <div class="task" id="task-22">
+    <input type="checkbox" onchange="handleCheck(this, 'task-22', 'ts-22')"/>
+    <div class="task-content">
+      <div class="task-label">Flush and close remaining group head(s)</div>
+      <div class="timestamp" id="ts-22"></div>
+      <div class="initials-row">
+        <label>Initials:</label>
+        <input type="text" maxlength="4" placeholder="_ _"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="task" id="task-23">
+    <input type="checkbox" onchange="handleCheck(this, 'task-23', 'ts-23')"/>
+    <div class="task-content">
+      <div class="task-label">Clean chamber with grinds brush</div>
+      <div class="timestamp" id="ts-23"></div>
+      <div class="initials-row">
+        <label>Initials:</label>
+        <input type="text" maxlength="4" placeholder="_ _"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="task" id="task-24">
+    <input type="checkbox" onchange="handleCheck(this, 'task-24', 'ts-24')"/>
+    <div class="task-content">
+      <div class="task-label">Lock wheelbarrow</div>
+      <div class="timestamp" id="ts-24"></div>
+      <div class="initials-row">
+        <label>Initials:</label>
+        <input type="text" maxlength="4" placeholder="_ _"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="task" id="task-25">
+    <input type="checkbox" onchange="handleCheck(this, 'task-25', 'ts-25')"/>
+    <div class="task-content">
+      <div class="task-label">Condense, Pay in, Pay out tips (SL ONLY)</div>
+      <div class="timestamp" id="ts-25"></div>
+      <div class="initials-row">
+        <label>Initials:</label>
+        <input type="text" maxlength="4" placeholder="_ _"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="task" id="task-26">
+    <input type="checkbox" onchange="handleCheck(this, 'task-26', 'ts-26')"/>
+    <div class="task-content">
+      <div class="task-label">Final wipe down of all surfaces and equipment</div>
+      <div class="timestamp" id="ts-26"></div>
+      <div class="initials-row">
+        <label>Initials:</label>
+        <input type="text" maxlength="4" placeholder="_ _"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="task" id="task-27">
+    <input type="checkbox" onchange="handleCheck(this, 'task-27', 'ts-27')"/>
+    <div class="task-content">
+      <div class="task-label">Shut down all remaining machines and equipment</div>
+      <div class="timestamp" id="ts-27"></div>
+      <div class="initials-row">
+        <label>Initials:</label>
+        <input type="text" maxlength="4" placeholder="_ _"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="task" id="task-28">
+    <input type="checkbox" onchange="handleCheck(this, 'task-28', 'ts-28')"/>
+    <div class="task-content">
+      <div class="task-label">Count and close final cash drawer</div>
+      <div class="timestamp" id="ts-28"></div>
+      <div class="initials-row">
+        <label>Initials:</label>
+        <input type="text" maxlength="4" placeholder="_ _"/>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===================== LOCK-UP ===================== -->
+<div class="section">
+  <h2>🔐 Lock-Up</h2>
+
+  <div class="task" id="task-29">
+    <input type="checkbox" onchange="handleCheck(this, 'task-29', 'ts-29')"/>
+    <div class="task-content">
+      <div class="task-label">Lock walk-in cooler/freezer</div>
+      <div class="timestamp" id="ts-29"></div>
+      <div class="initials-row">
+        <label>Initials:</label>
+        <input type="text" maxlength="4" placeholder="_ _"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="task" id="task-30">
+    <input type="checkbox" onchange="handleCheck(this, 'task-30', 'ts-30')"/>
+    <div class="task-content">
+      <div class="task-label">Lock wheelbarrow door</div>
+      <div class="timestamp" id="ts-30"></div>
+      <div class="initials-row">
+        <label>Initials:</label>
+        <input type="text" maxlength="4" placeholder="_ _"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="task" id="task-31">
+    <input type="checkbox" onchange="handleCheck(this, 'task-31', 'ts-31')"/>
+    <div class="task-content">
+      <div class="task-label">Lock lane doors</div>
+      <div class="timestamp" id="ts-31"></div>
+      <div class="initials-row">
+        <label>Initials:</label>
+        <input type="text" maxlength="4" placeholder="_ _"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="task" id="task-32">
+    <input type="checkbox" onchange="handleCheck(this, 'task-32', 'ts-32')"/>
+    <div class="task-content">
+      <div class="task-label">Lock stand</div>
+      <div class="timestamp" id="ts-32"></div>
+      <div class="initials-row">
+        <label>Initials:</label>
+        <input type="text" maxlength="4" placeholder="_ _"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="task" id="task-33">
+    <input type="checkbox" onchange="handleCheck(this, 'task-33', 'ts-33')"/>
+    <div class="task-content">
+      <div class="task-label">Lock walkup doors</div>
+      <div class="timestamp" id="ts-33"></div>
+      <div class="initials-row">
+        <label>Initials:</label>
+        <input type="text" maxlength="4" placeholder="_ _"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="task" id="task-34">
+    <input type="checkbox" onchange="handleCheck(this, 'task-34', 'ts-34')"/>
+    <div class="task-content">
+      <div class="task-label">Lock snowblower door</div>
+      <div class="timestamp" id="ts-34"></div>
+      <div class="initials-row">
+        <label>Initials:</label>
+        <input type="text" maxlength="4" placeholder="_ _"/>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===================== SIGN-OFF ===================== -->
+<div class="signoff">
+  <h2>✅ Shift Lead Sign-Off</h2>
+  <div class="signoff-grid">
+    <div class="signoff-field">
+      <label>Shift Lead Name</label>
+      <input type="text" id="slName" placeholder="Full name"/>
+    </div>
+    <div class="signoff-field">
+      <label>Closing Time</label>
+      <input type="text" id="slTime" placeholder="e.g. 10:15 PM"/>
+    </div>
+    <div class="signoff-field">
+      <label>Date</label>
+      <input type="date" id="slDate"/>
+    </div>
+    <div class="signoff-field">
+      <label>Initials / Signature</label>
+      <input type="text" id="slSig" placeholder="Initials"/>
+    </div>
+    <div class="signoff-field" style="grid-column: 1 / -1;">
+      <label>Notes / Issues</label>
+      <textarea id="slNotes" rows="3" placeholder="Any issues, maintenance needs, or notes for the next shift..."></textarea>
+    </div>
+  </div>
+  <button class="submit-btn" onclick="submitChecklist()">✅ Submit & Complete Checklist</button>
+  <button class="reset-btn" onclick="resetChecklist()">🔄 Reset Checklist</button>
+</div>
+
+<footer>
+  <p>Seven Brew Drive Thru — Closing Checklist — Last Updated July 2025</p>
+</footer>
+
+<div class="toast" id="toast"></div>
 
 <script>
-  function toggle(taskEl) {
-    const cb = taskEl.querySelector('input[type="checkbox"]');
-    cb.checked = !cb.checked;
-    taskEl.classList.toggle('checked', cb.checked);
+  const totalTasks = 34;
+
+  function handleCheck(checkbox, taskId, tsId) {
+    const taskEl = document.getElementById(taskId);
+    const tsEl = document.getElementById(tsId);
+    if (checkbox.checked) {
+      const now = new Date();
+      const timeStr = now.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+      const dateStr = now.toLocaleDateString();
+      tsEl.textContent = `✔ Completed at ${timeStr} on ${dateStr}`;
+      taskEl.classList.add('completed');
+    } else {
+      tsEl.textContent = '';
+      taskEl.classList.remove('completed');
+    }
     updateProgress();
   }
 
   function updateProgress() {
-    const all = document.querySelectorAll('.task input[type="checkbox"]');
-    const done = document.querySelectorAll('.task input[type="checkbox"]:checked');
-    const pct = all.length ? Math.round((done.length / all.length) * 100) : 0;
-    document.getElementById('progress-bar').style.width = pct + '%';
-    document.getElementById('progress-label').textContent =
-      done.length + ' of ' + all.length + ' tasks completed (' + pct + '%)';
-    document.getElementById('complete-msg').style.display =
-      done.length === all.length ? 'block' : 'none';
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    let checked = 0;
+    checkboxes.forEach(cb => { if (cb.checked) checked++; });
+    const pct = Math.round((checked / totalTasks) * 100);
+    document.getElementById('progressBar').style.width = pct + '%';
+    document.getElementById('progressLabel').textContent = `${checked} of ${totalTasks} tasks completed`;
   }
 
   function submitChecklist() {
-    const all = document.querySelectorAll('.task input[type="checkbox"]');
-    const done = document.querySelectorAll('.task input[type="checkbox"]:checked');
-    const name = document.getElementById('sl-name').value.trim();
-    const sig = document.getElementById('sl-sig').value.trim();
-    const time = document.getElementById('sl-time').value;
+    const name = document.getElementById('slName').value.trim();
+    const sig = document.getElementById('slSig').value.trim();
+    const time = document.getElementById('slTime').value.trim();
+    const date = document.getElementById('slDate').value.trim();
 
-    if (done.length < all.length) {
-      alert('⚠️ Not all tasks are completed yet! Please finish all tasks before signing off.');
+    if (!name || !sig || !time || !date) {
+      showToast('⚠️ Please complete all sign-off fields!');
       return;
     }
-    if (!name || !sig || !time) {
-      alert('⚠️ Please complete all sign-off fields before submitting.');
+
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    let unchecked = 0;
+    checkboxes.forEach(cb => { if (!cb.checked) unchecked++; });
+
+    if (unchecked > 0) {
+      showToast(`⚠️ ${unchecked} task(s) still incomplete!`);
       return;
     }
-    alert('✅ Checklist submitted!\n\nShift Lead: ' + name + '\nClosed At: ' + time + '\n\nGreat work tonight! 🎉');
+
+    showToast('✅ Checklist submitted! Great work tonight!');
   }
 
   function resetChecklist() {
-    if (!confirm('🔄 Are you sure you want to reset the entire checklist?')) return;
-    document.querySelectorAll('.task').forEach(t => {
-      t.classList.remove('checked');
-      t.querySelector('input[type="checkbox"]').checked = false;
+    if (!confirm('Are you sure you want to reset the entire checklist?')) return;
+    document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+      cb.checked = false;
+      const taskId = cb.closest('.task').id;
+      const tsId = 'ts-' + taskId.split('-')[1];
+      document.getElementById(tsId).textContent = '';
+      cb.closest('.task').classList.remove('completed');
     });
-    document.getElementById('sl-name').value = '';
-    document.getElementById('sl-sig').value = '';
-    document.getElementById('sl-time').value = '';
-    document.getElementById('sl-notes').value = '';
-    document.getElementById('meta-date').value = '';
-    document.getElementById('meta-sl').value = '';
+    document.querySelectorAll('.initials-row input').forEach(i => i.value = '');
+    document.getElementById('slName').value = '';
+    document.getElementById('slTime').value = '';
+    document.getElementById('slDate').value = '';
+    document.getElementById('slSig').value = '';
+    document.getElementById('slNotes').value = '';
     updateProgress();
+    showToast('🔄 Checklist has been reset!');
+  }
+
+  function showToast(msg) {
+    const toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3500);
   }
 
   updateProgress();
